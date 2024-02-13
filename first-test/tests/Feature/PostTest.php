@@ -13,8 +13,12 @@ class PostTest extends TestCase
      */
     public function test_example(): void
     {
-        $response = $this->get('/posts');
-        $response->assertSee('Post A');
+        $this->get('/posts')
+            ->assertSee('Post A')
+            ->assertSeeInOrder([
+                'Post A',
+                'Post B'
+            ]);
         // $response->assertStatus(200);
     }
 }
