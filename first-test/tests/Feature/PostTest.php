@@ -8,12 +8,16 @@ use Tests\TestCase;
 
 class PostTest extends TestCase
 {
+    
     /**
      * A basic feature test example.
      */
     public function test_example(): void
     {
+        $this->withExceptionHandling();
+        
         $this->get('/posts')
+            ->assertSuccessful()
             ->assertSee('Post A')
             ->assertSeeInOrder([
                 'Post A',
